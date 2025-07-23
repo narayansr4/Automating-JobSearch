@@ -44,7 +44,7 @@ public class JobsListPage extends Base {
         do {
             previousCount = currentCount;//js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
             JavascriptExecutor js = (JavascriptExecutor)driver;
-            WaitUtils.waitForElementsVisibility(jobs,2);
+            WaitUtils.waitForElementsVisibility(jobs,5);
             js.executeScript("arguments[0].scrollIntoView(true);", jobs.get(jobs.size() -1));
             Thread.sleep(800);
             jobs = driver.findElements(By.xpath("//div[contains(@class,'grid grid-cols-1')] //div/a"));
