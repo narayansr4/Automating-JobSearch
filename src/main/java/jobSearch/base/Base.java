@@ -2,7 +2,9 @@ package jobSearch.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,10 +38,20 @@ public class Base {
         String browserName = prop.getProperty("browser");
         switch (browserName){
             case "chrome" :
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");  // Headless mode
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage"); // Recommended for Linux/CI
+                options.addArguments("--window-size=1920,1080");
+                driver = new ChromeDriver(options);
                 break;
             case "firefox" :
-                driver = new FirefoxDriver();
+                FirefoxOptions options2 = new FirefoxOptions();
+                options2.addArguments("--headless");  // Headless mode
+                options2.addArguments("--no-sandbox");
+                options2.addArguments("--disable-dev-shm-usage"); // Recommended for Linux/CI
+                options2.addArguments("--window-size=1920,1080");
+                driver = new FirefoxDriver(options2);
                 break;
         }
         driver.get(prop.getProperty("url"));

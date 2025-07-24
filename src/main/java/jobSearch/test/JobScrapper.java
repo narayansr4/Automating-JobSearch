@@ -16,8 +16,10 @@ public class JobScrapper extends Base {
     public static void main(String[] args) throws InterruptedException {
         JobScrapper obj = new JobScrapper();
         obj.setup();
+        System.out.println("Browser Started");
         LandingPage landingPage = new LandingPage();
         JobsListPage jobsListPage = landingPage.clickOnCareersLink();
+        System.out.println("Clicked on careers link");
         JobDetailPage jobDetailPage = new JobDetailPage();
 
         jobsListPage.enterKeyword();

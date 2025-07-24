@@ -2,6 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="Job Scraping">
-        <classes />
+        <classes>
+            <class name="jobSearch.test.JobScrapper"></class>
+        </classes>
     </test>
 </suite>
