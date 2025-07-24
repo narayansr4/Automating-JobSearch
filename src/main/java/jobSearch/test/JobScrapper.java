@@ -28,10 +28,11 @@ public class JobScrapper extends Base {
         Set<String> windowHandles = driver.getWindowHandles();
         Iterator<String> it = windowHandles.iterator();
         it.next();
-        Object[][] data = new Object[windowHandles.size()][3]; // Actually it should be "windowHandles.size() - 1" because there are 12 job postings and windowHandles.size() will return 13. But we are giving that extra one for Title
+        Object[][] data = new Object[windowHandles.size()][4]; // Actually it should be "windowHandles.size() - 1" because there are 12 job postings and windowHandles.size() will return 13. But we are giving that extra one for Title
         data[0][0] = prop.getProperty("columnHeader1");
         data[0][1] = prop.getProperty("columnHeader2");
         data[0][2] = prop.getProperty("columnHeader3");
+        data[0][3] = prop.getProperty("columnHeader4");
 
         int i = 1; //because i=0 is for title which is already given above
         int count = 1;
@@ -40,6 +41,7 @@ public class JobScrapper extends Base {
             data[i][0] = count;
             data[i][1] = jobDetailPage.getCompanyname();
             data[i][2] = jobDetailPage.getClosingDate();
+            data[i][3] = jobDetailPage.getEmail();
             i++;
             count++;
         }
